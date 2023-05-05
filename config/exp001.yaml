@@ -1,0 +1,8 @@
+name: exp001
+dataset: movielens # movielens or sushi
+seed: 42
+num_institution: 2
+num_institution_user: 10
+num_anchor_data: 1000
+dim_intermediate: 500
+dim_integrate: 300
