@@ -151,12 +151,11 @@ class DataCollaborationAnalysis:
         integrate_train_y = np.hstack(train_y_list)
         integrate_test_y = np.hstack(test_y_list)
 
-        print("統合表現（訓練データ）の数と次元数: ", integrate_train_x.shape)
-        print("統合表現（テストデータ）の数と次元数: ", integrate_test_x.shape)
-
         # logにも出力
         self.logger.info("統合表現（訓練データ）の数と次元数: {}".format(integrate_train_x.shape))
         self.logger.info("統合表現（テストデータ）の数と次元数: {}".format(integrate_test_x.shape))
+        self.logger.info("統合表現（訓練データの正解）の数と次元数: {}".format(integrate_train_y.shape))
+        self.logger.info("統合表現（テストデータの正解）の数と次元数: {}".format(integrate_test_y.shape))
 
         return integrate_train_x, integrate_test_x, integrate_train_y, integrate_test_y
 
@@ -194,7 +193,16 @@ class DataCollaborationAnalysis:
             test_y_list,
         )
 
-        return integrate_train_x, integrate_test_x, integrate_train_y, integrate_test_y
+        return (
+            train_x_list,
+            train_y_list,
+            test_x_list,
+            test_y_list,
+            integrate_train_x,
+            integrate_test_x,
+            integrate_train_y,
+            integrate_test_y,
+        )
 
     @staticmethod
     def svd(train_x, anchor_x, test_x, n_components):
